@@ -1,16 +1,16 @@
 {
-    "name": "goodreads-scraper",
-    "version": "1.0.1",
-    "description": "",
-    "main": "main.js",
-    "repository": {
-	"type": "git",
-	"url": "git+https://github.com/tombonan/goodreads-scraper.git"
-    },
-    "author": "Tom Bonan",
-    "homepage": "https://github.com/tombonan/goodreads-scraper",
-    "dependencies": {
-	"electron": "^1.7.11",
-	"nightmare": "^2.10.0"
-    }
+   "name": "goodreads-scraper",
+   "version": "1.0.1",
+   "description": "",
+   "main": "main.js",
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/tombonan/goodreads-scraper.git"
+   },
+   "author": "Tom Bonan",
+   "homepage": "https://github.com/tombonan/goodreads-scraper#readme",
+   "dependencies": {
+      "electron": "^1.7.11",
+      "nightmare": "^2.10.0"
+   }
 }

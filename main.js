@@ -14,18 +14,33 @@ async function getQuotes(author, numPages) {
         const nightmare = Nightmare({ show: false }); // hide electron window
         
         let formattedAuthor = author.replace(" ", "+");
-        let tempArray = [];
+        let currentPage = 1,
+            nextPageExists = true,
+            tempArray = [];
 
         await nightmare
             .goto(base_url + formattedAuthor)
             .wait('body');
 
-        tempArray.push(await nightmare
+        nextPageExists = await nightmare.visible('.next_page');
+
+        while (nextPageExists && currentPage <= numPages) {
+            console.log(`-- | Page ${currentPage}`);
+            tempArray.push(await nightmare
                        .evaluate(function() {
                            return Array.from(document.querySelectorAll('.quoteText')).map(el => el.innerText);
                        })
-                      );
+                          );
 
+            await nightmare
+                .click('.next_page')
+                .wait('body');
+
+            currentPage++;
+            nextPageExists = await nightmare.visible('.next_page');
+            
+        }
+        
         await nightmare.end();
         const fileName = author.toLowerCase().replace(" ", "-") + '-quotes';
         
